@@ -42,8 +42,8 @@ const SignUpPage = () => {
 
             <Form className="w-full max-w-96" onSubmit={onSubmit}>
                 <Fieldset>
-                    <Fieldset.Legend>Profile Settings</Fieldset.Legend>
-                    <Description>Update your profile information.</Description>
+                    <Fieldset.Legend>Game_Hub Registration</Fieldset.Legend>
+                    <Description>Create your Game-Hub account</Description>
                     <FieldGroup>
                         <TextField
                             isRequired
