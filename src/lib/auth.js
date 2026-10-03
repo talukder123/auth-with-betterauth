@@ -6,7 +6,10 @@ const client = new MongoClient(process.env.BETTET_AUTH_MONGODB_URL);
 const db = client.db("game-hub-db");
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db, {
-    client,
-  }),
+    emailAndPassword: {
+        enabled: true,
+    },
+    database: mongodbAdapter(db, {
+        client,
+    }),
 });
