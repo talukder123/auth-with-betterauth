@@ -74,7 +74,7 @@ const NavbarSection = () => {
                     </li>
                     {
                         session?.user && <li>
-                        <Link href="#">Profile</Link>
+                        <Link href="/profile">Profile</Link>
                     </li>
                     }
                 </ul>
