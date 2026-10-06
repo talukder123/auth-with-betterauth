@@ -8,9 +8,9 @@ import { useRouter } from "next/navigation";
 import baseURL from "@/services/baseURL";
 
 
-const NavbarSection = () => {
+const NavbarSection = ({categories}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [category, setCategories] = useState([]);
+    // const [category, setCategories] = useState([]);
 
 
     const router = useRouter();
@@ -29,14 +29,14 @@ const NavbarSection = () => {
     }
     console.log(session);
 
-    useEffect(()=>{
-        fetch(`${baseURL}/api/categories`)
-        .then(res => res.json())
-        .then(data => setCategories(data))
-        .catch(err => console.log(err))
-    }, [])
+    // useEffect(()=>{
+    //     fetch(`${baseURL}/api/categories`)
+    //     .then(res => res.json())
+    //     .then(data => setCategories(data))
+    //     .catch(err => console.log(err))
+    // }, [])
 
-    console.log(category);
+    console.log(categories);
 
 
     return (
