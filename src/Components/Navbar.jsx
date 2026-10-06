@@ -1,12 +1,18 @@
 'use client';
-import { useState } from "react";
+
+
+import { useEffect, useState } from "react";
 import { Link, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import baseURL from "@/services/baseURL";
 
 
 const NavbarSection = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [category, setCategories] = useState([]);
+
+
     const router = useRouter();
 
     const { data: session } = authClient.useSession();
@@ -22,6 +28,15 @@ const NavbarSection = () => {
         });
     }
     console.log(session);
+
+    useEffect(()=>{
+        fetch(`${baseURL}/api/categories`)
+        .then(res => res.json())
+        .then(data => setCategories(data))
+        .catch(err => console.log(err))
+    }, [])
+
+    console.log(category);
 
 
     return (
@@ -123,7 +138,7 @@ const NavbarSection = () => {
                                 </Link>
                                     <Link href="/sign-up">
                                         <Button>Sign Up</Button>
-                                    </Link></>
+                                </Link></>
                             }
                         </li>
                     </ul>
