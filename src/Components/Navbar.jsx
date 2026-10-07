@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import baseURL from "@/services/baseURL";
 
 
-const NavbarSection = ({categories}) => {
+const NavbarSection = ({ categories }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     // const [category, setCategories] = useState([]);
 
@@ -79,18 +79,17 @@ const NavbarSection = ({categories}) => {
                     </div>
                 </div>
                 <ul className="hidden items-center gap-4 md:flex">
-                    <li>
-                        <Link href="#">Features</Link>
-                    </li>
-                    <li>
-                        <Link href="#" className="font-medium text-accent" aria-current="page">
-                            Dashboard
-                        </Link>
-                    </li>
+                    {
+                        categories?.map((cat) => (
+                            <li key={cat?._id}>
+                               <span>{cat?.icon}</span> <Link href={`/category/${cat?.slug}`}>{cat?.name}</Link>
+                            </li>
+                        ))
+                    }
                     {
                         session?.user && <li>
-                        <Link href="/profile">Profile</Link>
-                    </li>
+                            <Link href="/profile">Profile</Link>
+                        </li>
                     }
                 </ul>
                 <div className="hidden items-center gap-4 md:flex">
@@ -138,7 +137,7 @@ const NavbarSection = ({categories}) => {
                                 </Link>
                                     <Link href="/sign-up">
                                         <Button>Sign Up</Button>
-                                </Link></>
+                                    </Link></>
                             }
                         </li>
                     </ul>
